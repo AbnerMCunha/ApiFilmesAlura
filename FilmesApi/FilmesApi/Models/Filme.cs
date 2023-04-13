@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations;
 namespace FilmesApi.Models {
     public class Filme {
 
-        [Required(ErrorMessage ="O Título do Filme é Obrigatório")]
-        
-        public string Titulo { get; set; }
+        public int Id { get; set; }
+
+        [Required(ErrorMessage ="O Título do Filme é Obrigatório")]        
+        public string Titulo { get; set; }        
 
         [Required(ErrorMessage = "O Genero do Filme é Obrigatório")]
         [MaxLength(50, ErrorMessage = "Tamanho Maximo é de 50")]
