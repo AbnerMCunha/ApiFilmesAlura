@@ -23,10 +23,13 @@ public class FilmeController {
     }
 
     [HttpGet]
-    public List<Filme> RecuperaFilmes()
-    {
-        Console.WriteLine(filmes.Count.ToString());
-        return filmes;
+    public IEnumerable<Filme> RecuperaFilmes([FromQuery]int skip = 0, [FromQuery]int take = 50)  //O método Skip() indica quantos elementos da lista pular. O Take() define quantos serão selecionados.
+    {   //A Anotação [FromQuery] explicita que o usuário quem dará esses dados, por meio da consulta (query), no corpo da requisição
+        //Exemplo: https://localhost:7106/filme?skip=10&take=5
+        //Caso o usuario não informe, o valor padrão a ser pego é o da atribuição passada nos argumentos deste metodo get.
+
+        //Console.WriteLine(filmes.Count.ToString());
+        return filmes.Skip(skip).Take(take);
     }
 
     [HttpGet("{Id}")]
